@@ -1,8 +1,11 @@
 module Spree
   class Country < Spree::Base
+    # we need to have this callback before any dependent: :destroy associations
+    # https://github.com/rails/rails/issues/3458
+    before_destroy :ensure_not_default
+
     has_many :states, dependent: :destroy
     has_many :addresses, dependent: :restrict_with_error
-
     has_many :zone_members,
              -> { where(zoneable_type: 'Spree::Country') },
              class_name: 'Spree::ZoneMember',
@@ -10,8 +13,6 @@ module Spree
              foreign_key: :zoneable_id
 
     has_many :zones, through: :zone_members, class_name: 'Spree::Zone'
-
-    before_destroy :ensure_not_default
 
     validates :name, :iso_name, presence: true, uniqueness: { case_sensitive: false, allow_blank: true }
 

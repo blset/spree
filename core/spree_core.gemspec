@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.files        = `git ls-files`.split("\n")
   s.require_path = 'lib'
 
-  s.add_dependency 'activemerchant', '~> 1.49.0'
+  s.add_dependency 'activemerchant', '~> 1.49'
   s.add_dependency 'acts_as_list', '~> 0.7.4'
   s.add_dependency 'awesome_nested_set', '~> 3.1.1'
   s.add_dependency 'carmen', '~> 1.0.0'
@@ -40,7 +40,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'responders'
   s.add_dependency 'state_machines-activerecord', '~> 0.2'
   s.add_dependency 'stringex'
-  s.add_dependency 'truncate_html', '~> 0.9.3'
   s.add_dependency 'twitter_cldr', '~> 3.0'
   s.add_dependency 'sprockets-rails'
 
